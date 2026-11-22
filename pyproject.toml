@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "random-numbers"
+version = "2.0.0"
+description = "Pseudo-random number generators, simulation of events and random variables, with an interactive console menu"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Edward Lik" }]
+requires-python = ">=3.10"
+dependencies = ["rich>=12"]
+keywords = ["random", "simulation", "lcg", "middle-square", "poisson", "monte-carlo"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Education",
+    "Environment :: Console",
+    "Natural Language :: Russian",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+plot = ["matplotlib>=3"]
+
+[project.scripts]
+random-numbers = "random_numbers.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/mredwardlik/random-numbers"
+Issues = "https://github.com/mredwardlik/random-numbers/issues"
+
+[tool.setuptools]
+packages = ["random_numbers"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "random_numbers"]
+addopts = "--doctest-modules --ignore=random_numbers/__main__.py"
